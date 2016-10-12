@@ -40,7 +40,7 @@ public class RedisLoginImpl implements RedisLogin {
     @Override
     public Visitor isLogin(HttpServletRequest request) {
 
-        String xId = CookieUtils.getCookieValue(request, LoginConstant.XONE_COOKIE_NAME_STRING);
+        /**String xId = CookieUtils.getCookieValue(request, LoginConstant.XONE_COOKIE_NAME_STRING);
 
         if (xId != null) {
 
@@ -58,7 +58,7 @@ public class RedisLoginImpl implements RedisLogin {
                 return null;
             }
 
-        } else {
+        } else*/ {
 
             return null;
         }
@@ -89,7 +89,7 @@ public class RedisLoginImpl implements RedisLogin {
         //
         // 更新Redis数据
         //
-        updateRedisVisitor(visitor, request, expireTime);
+        //updateRedisVisitor(visitor, request, expireTime);
     }
 
     /**
@@ -144,7 +144,7 @@ public class RedisLoginImpl implements RedisLogin {
         updateSessionVisitor(request.getSession(), null);
 
         // 更新redis
-        updateRedisVisitor(null, request, 0);
+        //updateRedisVisitor(null, request, 0);
     }
 
 }

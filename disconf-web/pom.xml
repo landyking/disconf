@@ -271,7 +271,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
 
         <!-- log -->
@@ -346,6 +346,15 @@
                     <include>**/*.*</include>
                 </includes>
             </resource>
+            <resource>
+                <directory>${project.basedir}/html</directory>
+                <includes>
+                    <include>*.html</include>
+                    <include>assets/**/*</include>
+                    <include>dep/**/*</include>
+                </includes>
+                <targetPath>${project.build.outputDirectory}/META-INF/resources/</targetPath>
+            </resource>
         </resources>
 
         <plugins>
@@ -357,7 +366,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <configuration>
+                <!--<configuration>
                     <webResources>
                         <resource>
                             <directory>${project.basedir}/src/main/resources</directory>
@@ -366,9 +375,16 @@
                             </includes>
                         </resource>
                     </webResources>
+                </configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 

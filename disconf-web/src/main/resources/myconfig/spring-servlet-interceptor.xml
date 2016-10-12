@@ -32,9 +32,9 @@
                         <value>/api/config/simple/list</value>
                     </list>
                 </property>
-                <property name="XONE_COOKIE_DOMAIN_STRING">
+                <!--<property name="XONE_COOKIE_DOMAIN_STRING">
                     <value>${domain}</value>
-                </property>
+                </property>-->
             </bean>
         </mvc:interceptor>
 

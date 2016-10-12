@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.baidu.dsp.common.constant.WebConstants;
 import com.baidu.disconf.web.service.user.constant.UserConstant;
 import com.baidu.disconf.web.service.user.dto.Visitor;
 import com.baidu.disconf.web.service.user.service.UserMgr;
@@ -74,7 +75,13 @@ public class LoginInterceptor extends WebCommonInterceptor {
 
         // 显示所有用户的请求
         LOG.info(request.getRequestURI());
-
+        if (requestPath.trim().equals("/")) {
+            request.getRequestDispatcher("/index.html").forward(request, response);
+            return true;
+        }
+        if(!requestPath.startsWith(WebConstants.API_PREFIX)){
+            return true;
+        }
         if (notInterceptPathList != null) {
 
             // 更精确的定位
